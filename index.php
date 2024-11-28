@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['letra'])) {
 
     // Verificar si la letra ya se ha usado
     if (in_array($letra, $_SESSION['letras_usadas'])) {
-        echo "Ya has usado la letra '$letra'. Intenta con otra.<br>";
+        echo "<p class='mensaje'>Ya has usado la letra '$letra'. Intenta con otra.</p>";
     } else {
         // Añadir la letra a las usadas
         $_SESSION['letras_usadas'][] = $letra;
@@ -55,6 +55,50 @@ if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
 <head>
     <meta charset="UTF-8">
     <title>Ahorcado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .mensaje {
+            color: red;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
     <h1>Juego del Ahorcado</h1>
@@ -66,5 +110,6 @@ if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
         <button type="submit">Adivinar</button>
     </form>
     <p>Letras usadas: <?php echo implode(', ', $_SESSION['letras_usadas']); ?></p>
+    <footer>&copy; 2024 Juego del Ahorcado. Todos los derechos reservados.</footer>
 </body>
 </html>
