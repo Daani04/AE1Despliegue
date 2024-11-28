@@ -110,6 +110,8 @@ if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
         <button type="submit">Adivinar</button>
     </form>
     <p>Letras usadas: <?php echo implode(', ', $_SESSION['letras_usadas']); ?></p>
-    <footer>&copy; 2024 Juego del Ahorcado. Todos los derechos reservados.</footer>
+    <footer>
+        <p>&copy; 2024 Mi Aplicación. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
