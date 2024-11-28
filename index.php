@@ -12,6 +12,18 @@ if (!isset($_SESSION['palabra'])) {
     $_SESSION['letras_usadas'] = [];
 }
 
+// Inicializar el juego
+if ($_SESSION['letras_acertadas'] == $_SESSION['palabra']) {
+    header('Location: ganar.php');
+    session_destroy();
+    exit();
+} elseif ($_SESSION['vidas'] <= 0) {
+    header('Location: perder.php');
+    session_destroy();
+    exit();
+}
+
+
 // Procesar la letra enviada
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['letra'])) {
     $letra = strtolower($_POST['letra']);
